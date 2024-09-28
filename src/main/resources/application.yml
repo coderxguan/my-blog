@@ -5,3 +5,18 @@ spring:
     password: o#DwN&JSa56
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.guanhf.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      guanhf:
+        mapper: debug  # 显示 Mapper 层详细日志
+        service: info  # 显示 Service 层普通日志
+        controller: info  # 显示Controller 层普通日志

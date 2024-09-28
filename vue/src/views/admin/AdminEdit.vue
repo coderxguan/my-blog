@@ -1,11 +1,13 @@
 <script>
 export default {
-  name: "AdminArticles"
+  name: "AdminEdit"
 }
 </script>
 
 <template>
-adminArticles
+<div>
+  文章编辑
+</div>
 </template>
 
 <style scoped>

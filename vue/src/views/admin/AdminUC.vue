@@ -1,11 +1,14 @@
 <script>
 export default {
-  name: "AdminEditArticle"
+  name: "AdminUC"
 }
 </script>
 
 <template>
-AdminEditArticle
+<div>
+
+  用户中心
+</div>
 </template>
 
 <style scoped>

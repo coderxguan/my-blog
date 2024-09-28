@@ -1,11 +1,13 @@
 <script>
 export default {
-  name: "AdminStatistics"
+  name: "AdminComment"
 }
 </script>
 
 <template>
-statistics
+<div>
+  评论管理
+</div>
 </template>
 
 <style scoped>
