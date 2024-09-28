@@ -50,7 +50,7 @@
 
 <script setup>
 import {onMounted, ref} from 'vue';
-import { ElMessage, ElButton, ElDialog } from 'element-plus';
+import { ElMessage} from 'element-plus';
 import {fetchCategories} from "@/api/category.js";
 import {addCategoryToServer} from "@/api/category.js";
 import {deleteCategoryFromServer} from "@/api/category.js";
