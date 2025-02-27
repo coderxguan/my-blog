@@ -22,3 +22,4 @@
    - POST /api/articles/{id}/comments - 为文章添加评论
    - DELETE /api/comments/{id} - 删除评论
 new test
+   - DELETE /api/comments/{id} - 删除评论
