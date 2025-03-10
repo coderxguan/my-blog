@@ -5,13 +5,10 @@ spring:
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-mybatis:
-  #mapper配置文件
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.guanhf.entity
+mybatis-plus:
   configuration:
-    #开启驼峰命名
-    map-underscore-to-camel-case: true
+    map-underscore-to-camel-case: true  # 自动驼峰命名转换
+  mapper-locations: classpath*:/mapper/**/*.xml  # XML 映射文件路径
 
 logging:
   level:
