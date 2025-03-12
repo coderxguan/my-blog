@@ -47,7 +47,6 @@ public class CategoryController {
     public Result addCategory(@RequestBody CategoryDTO categoryDTO) {
         Category category = new Category();
         category.setName(categoryDTO.getName());
-        category.setDescription(categoryDTO.getDescription());
         boolean isAdd = categoryService.addCategory(category);
         // 添加成功, 返回添加的分类
         if(isAdd){
@@ -64,8 +63,6 @@ public class CategoryController {
         Category category = new Category();
         category.setId(id);
         category.setName(categoryDTO.getName());
-        category.setDescription(categoryDTO.getDescription());
-
         if(categoryService.updateCategory(category)) {
             return Result.success();
         }

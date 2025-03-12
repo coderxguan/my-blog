@@ -4,7 +4,6 @@
     <el-button class="add-button" type="primary" @click="openAddCategoryDialog">添加分类</el-button>
     <el-table :data="categories" style="width: 100%" stripe>
       <el-table-column prop="name" label="分类名称" />
-      <el-table-column prop="description" label="分类描述" />
       <el-table-column label="操作">
         <template #default="{ row }">
           <el-button @click="editCategory(row)" size="small" type="warning">编辑</el-button>
@@ -19,9 +18,6 @@
         <el-form-item label="分类名称" :rules="[{ required: true}]">
           <el-input v-model="newCategory.name" placeholder="请输入分类名称..."/>
         </el-form-item>
-        <el-form-item label="分类描述" :rules="[{ required: true }]">
-          <el-input v-model="newCategory.description" placeholder="请输入分类描述..."/>
-        </el-form-item>
       </el-form>
       <template #footer>
         <el-button @click="addDialogVisible = false">取 消</el-button>
@@ -34,9 +30,6 @@
       <el-form :model="currentCategory">
         <el-form-item label="分类名称" :rules="[{ required: true }]">
           <el-input v-model="currentCategory.name" placeholder="请输入分类名称..." />
-        </el-form-item>
-        <el-form-item label="分类描述" :rules="[{ required: true }]">
-          <el-input v-model="currentCategory.description" placeholder="请输入分类描述..." />
         </el-form-item>
       </el-form>
       <template #footer>
@@ -59,8 +52,8 @@ import {updateCategoryToServer} from "@/api/category.js";
 const categories = ref([]);
 const addDialogVisible = ref(false);
 const editDialogVisible = ref(false);
-const newCategory = ref({ name: '', description: '' });
-const currentCategory = ref({id: null, name: '', description: ''});
+const newCategory = ref({ name: '' });
+const currentCategory = ref({id: null, name: ''});
 
 // 页面加载时从后端获取的分类数据
 const loadCategories = async () => {
@@ -77,9 +70,6 @@ const addCategory = async () => {
   if (!newCategory.value.name) {
     ElMessage.error('分类名称不能为空');
     return;
-  } else if(!newCategory.value.description) {
-    ElMessage.error('分类描述不能为空');
-    return;
   }
 
   try{
@@ -87,11 +77,11 @@ const addCategory = async () => {
     console.log(response);
     if(response.code === 1){
       categories.value.push(response.data);  // 将新内容添加到列表
-      newCategory.value = {name: '', description: ''};
+      newCategory.value = {name: ''};
       addDialogVisible.value = false;
       ElMessage.success('分类添加成功');
     }else if(response.code === 0){
-      newCategory.value = {name: '', description: ''};
+      newCategory.value = {name: ''};
       addDialogVisible.value = false;
       ElMessage.error(response.msg);
     }
